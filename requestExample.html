@@ -1,0 +1,33 @@
+<html>
+<body>
+	<script>
+  var formDataToSend = {
+              requestName:btoa(btoa(btoa("module1"))),
+              data:{
+                account_type:"customer",
+                first_name:"firstName2",
+                last_name:"lastName2",
+                email:"email6",
+                password:"password",
+                phone_number:"+123456789123"
+              }
+            };       
+              const urlToSend = "API/entryPoint.php";
+              let xhrSendAnnonce = new XMLHttpRequest();
+                  xhrSendAnnonce.addEventListener("loadstart", () =>
+                   {    
+                   });
+                  xhrSendAnnonce.addEventListener("load", () =>
+                   {
+                        let response = JSON.parse(xhrSendAnnonce.responseText);
+                        console.log(response);
+                   });
+                  xhrSendAnnonce.addEventListener("error",()=>{
+                    //console.log(e.error);
+                  });
+             xhrSendAnnonce.responseType = "text";
+	           xhrSendAnnonce.open('POST',urlToSend, true);
+	          xhrSendAnnonce.send(JSON.stringify(formDataToSend));
+	</script>
+</body>
+</html>
